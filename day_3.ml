@@ -13,7 +13,7 @@ let rec naloga2  sez_dreves =
         match sez_dreves with
         | [] -> acc
         | head :: tail -> if zamik_navzdol <> 1 && (stevec mod zamik_navzdol) = 0 then aux acc pozicija (stevec + 1) tail (zamik_desno, zamik_navzdol)
-            else if String.get head (pozicija mod 31) = '#' then aux (acc + 1) (pozicija + zamik_desno) (stevec+1)  tail (zamik_desno, zamik_navzdol)
+            else if String.get head (pozicija mod 31) = '#' then aux (acc + 1) (pozicija + zamik_desno) (stevec+1)  tail (zamik_desno, zamik_navzdol)   (*31 je dolzina stringov.*)
             else aux acc (pozicija + zamik_desno) (stevec+1) tail (zamik_desno, zamik_navzdol)
     in
     List.fold_left (fun x y -> x * y) 1 (List.map (aux 0 0 1 sez_dreves) [(1,1);(3,1);(5,1);(7,1);(1,2)])
